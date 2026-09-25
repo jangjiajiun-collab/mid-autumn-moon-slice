@@ -10,6 +10,7 @@ const flash = document.querySelector('#flash');
 const ending = document.querySelector('#ending');
 const prompt = document.querySelector('#prompt');
 const hint = document.querySelector('#hint');
+const childVideo = document.querySelector('#childVideo');
 let armed = false, cut = false, pointer = null;
 
 const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:false, powerPreference:'low-power'});
@@ -21,8 +22,9 @@ const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Buff
 const particles=new THREE.Points(geo,new THREE.PointsMaterial({size:.014,vertexColors:true,transparent:true,opacity:.72,blending:THREE.AdditiveBlending,depthWrite:false})); scene.add(particles);
 function resize(){ const {clientWidth:w,clientHeight:h}=card; renderer.setSize(w,h,false); camera.left=-w/h;camera.right=w/h;camera.updateProjectionMatrix(); } addEventListener('resize',resize);resize();
 function tick(t){ const a=geo.attributes.position.array; for(let i=0;i<count;i++){a[i*3+1]+=speeds[i]*(armed?1:.32); if(a[i*3+1]>1.15)a[i*3+1]=-1.1;}geo.attributes.position.needsUpdate=true;particles.rotation.z=t*.00008;renderer.render(scene,camera);requestAnimationFrame(tick);}requestAnimationFrame(tick);
-function arm(){ if(armed)return; armed=true; start.classList.add('hide'); prompt.textContent='月餅來了'; hint.textContent='滑動，釋放月光一閃'; }
-function reset(){ cut=false; armed=true; ending.classList.remove('show'); ending.setAttribute('aria-hidden','true'); mooncake.style.opacity='1'; mooncake.style.transform='translate(-50%,-50%) scale(1)'; card.classList.remove('impact','shake'); prompt.textContent='再來一刀'; hint.textContent='滑動，釋放月光一閃'; }
+function playChild(){ childVideo.currentTime=0; childVideo.play().catch(()=>{}); }
+function arm(){ if(armed)return; armed=true; playChild(); start.classList.add('hide'); prompt.textContent='月餅來了'; hint.textContent='滑動，釋放月光一閃'; }
+function reset(){ cut=false; armed=true; playChild(); ending.classList.remove('show'); ending.setAttribute('aria-hidden','true'); mooncake.style.opacity='1'; mooncake.style.transform='translate(-50%,-50%) scale(1)'; card.classList.remove('impact','shake'); prompt.textContent='再來一刀'; hint.textContent='滑動，釋放月光一閃'; }
 function perform(){ if(!armed||cut)return;cut=true;prompt.textContent='月光一閃';hint.textContent='';slash.classList.remove('fire');flash.classList.remove('fire');void slash.offsetWidth;slash.classList.add('fire');flash.classList.add('fire');card.classList.add('shake');
   setTimeout(()=>{mooncake.style.opacity='0';},10);
   setTimeout(()=>{card.classList.add('impact');},260);
