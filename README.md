@@ -19,7 +19,7 @@ npm run preview
 - The original performance starts at 2.72 seconds. The impact is triggered by the video's actual playback position at 3.54 seconds, not a blind animation timeout.
 - The cake separates into independent 3D halves with visible filling and yolks. Gold crumbs, a cyan blade, a brief hold, and slow playback emphasize the impact.
 - The slash reaches the moon; a luminous crack and a ring fade as the moon returns to normal.
-- The film holds at 5.20 seconds, followed by the greeting and replay button.
+- The film holds at 5.20 seconds and blends into a still extracted at that timestamp. This keeps the ending frame consistent across Safari and Chromium. The greeting and replay button follow.
 
 The supplied Prisma prompt informed the inset rounded film frame, dark/cream palette, large typography, and staggered greeting reveal. Its studio marketing sections and remote stock media are not included.
 
