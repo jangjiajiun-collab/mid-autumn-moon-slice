@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.vercel/
+work/
+.playwright-cli/
+output/
+.DS_Store
+.vercel
+.env*.local

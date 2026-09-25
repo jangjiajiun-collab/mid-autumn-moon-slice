@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#070b10" />
+  <meta name="description" content="小小劍士，月下出招。滑動螢幕，送出一份中秋祝福。" />
+  <title>月光一閃 · 中秋快樂</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23070b10'/%3E%3Ccircle cx='32' cy='32' r='20' fill='%23e9dba9'/%3E%3Cpath d='M10 49 55 15' stroke='%234ad9e9' stroke-width='4'/%3E%3C/svg%3E" />
+  <link rel="preload" as="image" href="/film-poster.jpg" />
+</head>
+<body>
+  <main id="card" class="card" data-phase="idle" aria-label="月光一閃，中秋互動賀卡">
+    <div id="scene" class="scene">
+      <div class="film-layer">
+        <video id="childVideo" playsinline webkit-playsinline muted preload="auto" poster="/film-poster.jpg" aria-label="小朋友原本的揮刀影片">
+          <source src="/film.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="night-grade" aria-hidden="true"></div>
+      <canvas id="webgl" aria-hidden="true"></canvas>
+      <div class="grain" aria-hidden="true"></div>
+      <div class="edge-shade" aria-hidden="true"></div>
+      <div class="impact-wash" aria-hidden="true"></div>
+    </div>
+    <header class="topbar">
+      <span class="signature"><span class="signature-mark" aria-hidden="true">✳</span> 月下小劍士</span>
+      <span class="edition">MID-AUTUMN <span>2026</span></span>
+    </header>
+    <div class="side-note" aria-hidden="true">一份很有力量的祝福</div>
+    <div class="scene-caption" aria-hidden="true"><span id="chapterNumber">01</span><i></i><span id="chapterLabel">月下，蓄勢</span></div>
+    <section class="intro" id="intro" aria-labelledby="title">
+      <p class="overline">小小劍士 · 大大心意</p>
+      <h1 id="title"><span>月光</span><span>一閃<span class="title-star" aria-hidden="true">✳</span></span></h1>
+      <div class="intro-bottom">
+        <p class="intro-copy">這一刀，<br />把祝福送到月亮上。</p>
+        <div class="action-group">
+          <button id="start" class="pill" type="button"><span>滑動斬月餅</span><span class="button-orb" aria-hidden="true">↗</span></button>
+          <span class="gesture-hint">在畫面上劃一刀，或點擊開始</span>
+        </div>
+      </div>
+    </section>
+    <div id="strikeTitle" class="strike-title" aria-hidden="true"><small>月之呼應</small><span>一閃</span></div>
+    <section id="ending" class="ending" aria-labelledby="greeting" hidden>
+      <p class="overline">把一整個月亮的祝福，送給你</p>
+      <h2 id="greeting"><span>中秋節</span><span>快樂<span class="title-star" aria-hidden="true">✳</span></span></h2>
+      <div class="ending-bottom"><p>月圓人團圓</p><button id="again" class="pill" type="button"><span>再斬一次</span><span class="button-orb" aria-hidden="true">↻</span></button></div>
+    </section>
+    <footer class="footline"><span>月光一閃 · 心意成圓</span><span id="phaseLabel">滑動開啟祝福</span></footer>
+    <p id="status" class="sr-only" role="status" aria-live="polite"></p>
+    <p id="notice" class="notice" hidden></p>
+    <noscript><p class="notice">請開啟 JavaScript，才能播放這張互動賀卡。</p></noscript>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
